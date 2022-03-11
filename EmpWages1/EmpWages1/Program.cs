@@ -1,16 +1,15 @@
-﻿{
-    public static void main(String args[]);
-}
-System.out.println("Welcome EmpWages");
-final int FULL_TIME = 1;
-int empType = (int)(Math.random() * 100) % 2;
-if (empType == FULL_TIME)
+﻿
+//Constants
+int IS_FULL_TIME = 1;
+Random random = new Random();
+//Computation
+int empCheck = random.Next(0, 2);
+if (empCheck == IS_FULL_TIME)
 {
-    System.out.println("Employee is Present");
-
+    Console.WriteLine("Employee is Present");
 }
 else
 {
-    System.out.println("Employee is Absent");
-
+    Console.WriteLine("Employee is Absent"); 
 }
+
