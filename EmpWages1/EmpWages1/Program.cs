@@ -1,34 +1,36 @@
 ﻿Console.WriteLine("Welcome to Employee Wage");
-int IS_ABSENT = 0;
-int IS_FULL_TIME = 1;
 int IS_PART_TIME = 2;
+int IS_FULL_TIME = 1;
+int IS_ABSENT = 0;
+int NUM_OF_WORKING_DAYS = 20;
 int EMP_RATE_PER_HOUR = 20;
-int NUM_OF_WORKING_DAY = 20;
+int MAX_HRS_IN_MONTH = 100;
 
 int empHrs = 0;
-int empWage = 0;
-int totalEmpWage = 0;
-for (int day =0; day < NUM_OF_WORKING_DAY; day++)
-{ 
-Random random = new Random();
-int empCheck = random.Next(3);
-switch (empCheck)
+int totalEmpHrs = 0;
+int totalWorkingDays = 0;
+while (totalEmpHrs <= MAX_HRS_IN_MONTH && totalWorkingDays < NUM_OF_WORKING_DAYS)
 {
-    case 1:
-        Console.WriteLine("Employee is Present full Time");
-        empHrs = 8;
-        break;
-    case 2:
-        Console.WriteLine("Employee is Present part Time");
-        empHrs = 4;
-        break;
-    default:
-        Console.WriteLine("Employee is Absent");
-        empHrs = 0;
-        break;
+    totalWorkingDays++;
+    Random random = new Random();
+    int empCheck = random.Next(0, 3);
+    switch (empCheck)
+    {
+        case 0:
+        IS_PART_TIME: Console.WriteLine("Employee is Present part Time");
+            empHrs = 4;
+            break;
+        case 1:
+        IS_FULL_TIME: Console.WriteLine("Employee is Present full Time");
+            empHrs = 8;
+            break;
+        default:
+            Console.WriteLine("Employee is Absent");
+            empHrs = 0;
+            break;
+    }
+    totalEmpHrs += empHrs;
+    Console.WriteLine("Day#:" + totalWorkingDays + " Emp Hrs : " + empHrs);
 }
-empWage = empHrs * EMP_RATE_PER_HOUR;
-    totalEmpWage += empWage;
-Console.WriteLine("Emp Wage : " + empWage);
-}
+int totalEmpWage = totalEmpHrs * EMP_RATE_PER_HOUR;
 Console.WriteLine("Total Emp Wage : " + totalEmpWage);
